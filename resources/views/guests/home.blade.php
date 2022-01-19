@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.guests')
 
 @section('content')
 <div class="container">
@@ -16,7 +16,6 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-                <a href="{{route('admin.users.index')}}">utenti</a>
             </div>
         </div>
     </div>
