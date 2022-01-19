@@ -17,6 +17,17 @@
                     {{ __('You are logged in!') }}
                 </div>
             </div>
+            <ul>
+                @foreach ($users as $user)
+                    <li>
+                        <a href="">
+                            name: {{$user->name}} / {{$user->role}} <br> email: {{$user->email}}
+                        </a>
+                        <a href="{{route('admin.users.edit', $user->id)}}">modifica</a>
+                    </li>
+                @endforeach
+
+            </ul>
         </div>
     </div>
 </div>

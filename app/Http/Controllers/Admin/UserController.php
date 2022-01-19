@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class UserController extends Controller
 {
@@ -14,7 +17,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.home');
+        $role = Auth::user()->role;
+        if($role !== 'admin'){
+            throw new HttpException(401, 'Error');
+        }
+        $users = User::all();
+        return view('admin.users.home', compact('users'));
     }
 
     /**
@@ -55,9 +63,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', compact('user'));        
     }
 
     /**
@@ -67,9 +75,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $data = $request->all();
+
+        $user->update($data);
+
+        return redirect()->route('admin.users.index')->with(['status'=>'Dati Aggiornati']);
     }
 
     /**

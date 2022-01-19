@@ -16,7 +16,12 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+                
+                @if (Auth::user()->role === 'admin')
                 <a href="{{route('admin.users.index')}}">utenti</a>
+                @endif
+
+                
             </div>
         </div>
     </div>
