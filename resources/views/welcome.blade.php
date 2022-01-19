@@ -81,7 +81,7 @@
                 </div>
             @endif
                 <App></App>
-                
+                <a href="{{route('articles.show', $article->id)}}"></a>
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
