@@ -7,14 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{route('articles.store')}}" method="POST">
+    <form action="{{route('articles.update', $article->id)}}" method="POST">
         @csrf
-        
+        @method('PUT')
+
         <label for="titolo">titolo</label>
-        <input type="text" name="titolo" id="titolo" " >
+        <input type="text" name="titolo" id="titolo"  value="{{$article->titolo}}">
     
         <label for="contenuto">contenuto</label>
-        <textarea name="contenuto" rows="10" cols="100" placeholder="Scrivi qui...">
+        <textarea  name="contenuto" rows="10" cols="100" ">
+            {{$article->contenuto}}
             
         </textarea>
     

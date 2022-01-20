@@ -7,7 +7,14 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="{{route('articles.index')}}">ritorna</a>
     <h1>{{$article->titolo}}</h1>
     <p>{{$article->contenuto}}</p>
+    <a href="{{route('articles.edit', $article->id)}}">modifica</a>
+    <form action="{{route('articles.destroy', $article->id)}}" method="post">
+        @csrf
+        @method('DELETE')
+        <input type="submit" value="Cancella">
+    </form>
 </body>
 </html>

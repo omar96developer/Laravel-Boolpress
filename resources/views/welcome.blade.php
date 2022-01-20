@@ -81,24 +81,18 @@
                 </div>
             @endif
                 <App></App>
-                {{-- <a href="{{route('articles.show', $article->id)}}"></a>  --}}
-               <a href="{{route('articles.create')}}">crea</a> 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+                <ul>
+                    @foreach ($article as $art)
+                    <li>
+                        <h3>{{$art->titolo}}</h3>
+                        <a href="{{route('articles.show', $art->id)}}">vai all' articolo</a>
+                    </li>
+                    @endforeach
+                </ul>
+               
+               
+               
+           
         </div>
     </body>
 </html>

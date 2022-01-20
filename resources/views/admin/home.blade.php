@@ -19,7 +19,9 @@
                 
                 @if (Auth::user()->role === 'admin')
                 <a href="{{route('admin.users.index')}}">utenti</a>
+               
                 @endif
+                <a href="{{route('articles.create')}}">crea</a> 
 
                 
             </div>
