@@ -135,8 +135,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "App"
+  name: "App",
+  data: function data() {
+    return {
+      articleList: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/articles').then(function (resp) {
+      _this.articleList = resp.data;
+    });
+  }
 });
 
 /***/ }),
@@ -671,7 +690,21 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n   Homepage\n    \n")])
+  return _c("div", [
+    _c("h1", [_vm._v("HOMEPAGE")]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.articleList, function (art) {
+        return _c("li", { key: art.id }, [
+          _c("h3", [_vm._v(_vm._s(art.titolo))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(art.contenuto))]),
+        ])
+      }),
+      0
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

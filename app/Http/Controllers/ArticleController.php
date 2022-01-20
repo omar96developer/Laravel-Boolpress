@@ -7,6 +7,11 @@ use App\Article;
 
 class ArticleController extends Controller
 {
+    public function article()
+    {
+        $article = Article::all();
+        return $article;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,7 @@ class ArticleController extends Controller
     public function index()
     {
         $article = Article::all();
-        return view('welcome', compact('article'));
+        return view('article.index', compact('article'));
     }
 
     /**

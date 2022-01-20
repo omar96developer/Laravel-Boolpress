@@ -22,6 +22,8 @@
                
                 @endif
                 <a href="{{route('articles.create')}}">crea</a> 
+                <a href="{{route('articles.index')}}">post</a> 
+                
 
                 
             </div>

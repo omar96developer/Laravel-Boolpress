@@ -81,14 +81,14 @@
                 </div>
             @endif
                 <App></App>
-                <ul>
+                {{-- <ul>
                     @foreach ($article as $art)
                     <li>
                         <h3>{{$art->titolo}}</h3>
                         <a href="{{route('articles.show', $art->id)}}">vai all' articolo</a>
                     </li>
                     @endforeach
-                </ul>
+                </ul> --}}
                
                
                
