@@ -81,7 +81,8 @@
                 </div>
             @endif
                 <App></App>
-                <a href="{{route('articles.show', $article->id)}}"></a>
+                {{-- <a href="{{route('articles.show', $article->id)}}"></a>  --}}
+               <a href="{{route('articles.create')}}">crea</a> 
             <div class="content">
                 <div class="title m-b-md">
                     Laravel

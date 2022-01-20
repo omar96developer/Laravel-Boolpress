@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });
  */
+Route::resource('articles', 'ArticleController');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -28,6 +29,7 @@ Route::middleware('auth')
     ->group(function(){
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('users', 'UserController');
+        
     });
 
 
