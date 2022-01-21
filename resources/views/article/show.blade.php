@@ -7,8 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{route('articles.index')}}">ritorna</a>
+    
     <h1>{{$article->titolo}}</h1>
+    <h5>{{$article->category->name}}</h5>
     <p>{{$article->contenuto}}</p>
     <a href="{{route('articles.edit', $article->id)}}">modifica</a>
     <form action="{{route('articles.destroy', $article->id)}}" method="post">
@@ -16,5 +17,6 @@
         @method('DELETE')
         <input type="submit" value="Cancella">
     </form>
+    <a href="{{route('articles.index')}}">ritorna</a>
 </body>
 </html>

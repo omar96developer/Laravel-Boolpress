@@ -13,6 +13,15 @@
 
         <label for="titolo">titolo</label>
         <input type="text" name="titolo" id="titolo"  value="{{$article->titolo}}">
+
+        <label for="categoria">Categoria</label>
+        <select name="category_id">
+        @foreach($categories as $category)
+        <option value="{{$category->id}}" @if($category->id === $article->category_id) selected @endif>
+            {{$category->name}}
+        </option>
+        @endforeach
+        </select>
     
         <label for="contenuto">contenuto</label>
         <textarea  name="contenuto" rows="10" cols="100" ">

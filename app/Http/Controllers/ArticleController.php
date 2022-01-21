@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Category;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
@@ -20,7 +21,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = Article::all();
+        $article = Article::with("category")->get();
         return view('article.index', compact('article'));
     }
 
@@ -31,7 +32,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article.create');
+        $categories = Category::all();
+        return view('article.create', compact('categories'));
     }
 
     /**
@@ -71,7 +73,11 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('article.edit', compact('article'));
+        $categories = Category::all();
+        return view('article.edit', [
+            "article" => $article,
+            "categories" => $categories
+        ]);
     }
 
     /**

@@ -6,6 +6,7 @@
             <li v-for="art in articleList" :key="art.id">
                 <h3>{{art.titolo}}</h3>
                 <p>{{art.contenuto}}</p>
+                <p>{{art.category.name}}</p>
                 
             </li>
         </ul> 

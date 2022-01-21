@@ -13,6 +13,17 @@
         <label for="titolo">titolo</label>
         <input type="text" name="titolo" id="titolo" " >
     
+
+        <label for="categoria">Categoria</label>
+        <select name="category_id">
+        @foreach($categories as $category)
+        <option value="{{$category->id}}">
+            {{$category->name}}
+        </option>
+        @endforeach
+        </select>
+
+
         <label for="contenuto">contenuto</label>
         <textarea name="contenuto" rows="10" cols="100" placeholder="Scrivi qui...">
             

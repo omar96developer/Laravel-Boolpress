@@ -142,6 +142,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "App",
   data: function data() {
@@ -700,6 +701,8 @@ var render = function () {
           _c("h3", [_vm._v(_vm._s(art.titolo))]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(art.contenuto))]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(art.category.name))]),
         ])
       }),
       0
