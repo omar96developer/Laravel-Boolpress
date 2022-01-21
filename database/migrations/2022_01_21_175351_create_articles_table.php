@@ -15,6 +15,10 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('author');
+            $table->foreign('author')
+            ->references('id')
+            ->on('users');
             $table->string('titolo');
             $table->longtext('contenuto');
             $table->timestamps();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -43,6 +44,8 @@ class ArticleController extends Controller
     {
         $data = $request->all();
         $newArticle = new Article;
+        $newArticle->author = Auth::user()->id;
+
         $newArticle->titolo = $data['titolo'];
         $newArticle->contenuto = $data['contenuto'];
         $newArticle->save();
