@@ -1,34 +1,21 @@
 @extends('layouts.admin')
-<h1>Utenti</h1>
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Utenti registrati') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-            <ul>
-                @foreach ($users as $user)
-                    <li>
-                        <a href="">
-                            name: {{$user->name}} / {{$user->role}} <br> email: {{$user->email}}
-                        </a>
-                        <a href="{{route('admin.users.edit', $user->id)}}">modifica</a>
-                    </li>
-                @endforeach
-
-            </ul>
-        </div>
-    </div>
+<div class="col-9 pt-5">
+    <ul>
+        @foreach ($users as $user)
+            <li class="mb-5">
+                <p>
+                    Nome: {{$user->name}}
+                </p>
+                <p>Ruolo: {{$user->role}} </p>
+                <p>Email: {{$user->email}}</p>
+                <button type="button" class="btn btn-warning btn-small"><a href="{{route('admin.users.edit', $user->id)}}" class="text-dark">Modifica</a></button>
+            </li>
+        @endforeach
+    
+    </ul>
+    
 </div>
+
 @endsection
