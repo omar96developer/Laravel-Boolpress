@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="col-6 py-5">
-  <h2>Modifica Utente</h2>
+<div class="col-6 p-5">
+  <h2 class="mb-4">Modifica Utente</h2>
   <form action="{{route('admin.users.update', $user->id)}}" method="POST">
     @csrf
     @method('put')
@@ -31,7 +31,7 @@
 
     
     <button class="btn btn-success" type="submit">Salva</button>
-    <button class="btn btn-danger" type="submit"><a href="{{route('admin.users.index')}}" class="text-dark fw-bold">Annulla</a></button>
+    <button class="btn btn-danger" type="submit"><a href="{{route('admin.users.index')}}" class="text-white fw-bold">Annulla</a></button>
     
 
 </form>

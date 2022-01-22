@@ -1,26 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h1>{{$article->titolo}}</h1>
-    <h5>{{$article->category->name}}</h5>
-    
-    @foreach ($article->tags as $tag)
-        <span>{{$tag->name}}, </span>
-    @endforeach
-    <p>{{$article->contenuto}}</p>
-    <a href="{{route('articles.edit', $article->id)}}">modifica</a>
-    <form action="{{route('articles.destroy', $article->id)}}" method="post">
-        @csrf
-        @method('DELETE')
-        <input type="submit" value="Cancella">
-    </form>
-    <a href="{{route('articles.index')}}">ritorna</a>
-</body>
-</html>
+    @extends('layouts.admin')
+    @section('content')
+    <div class="col-10 p-5">
+
+            <h1>{{$article->titolo}}</h1>
+            <p>{{$article->contenuto}}</p>
+            <h6>Genere: <small class="badge bg-success text-white">{{$article->category->name}}</small> </h6>
+            
+            @foreach ($article->tags as $tag)
+                <h6>Attore/i: <small class="badge bg-success text-white">{{$tag->name}}</small> </h6>
+            @endforeach
+            
+        <div class="d-flex mt-3">
+            
+            <button class="btn btn-warning mr-3" type="submit"><a href="{{route('articles.edit', $article->id)}} " class="text-dark">Modifica</a></button>
+
+            <form action="{{route('articles.destroy', $article->id)}}" method="post">
+                @csrf
+                @method('DELETE')
+                
+                <button class="btn btn-danger" type="submit">Elimina</button>
+
+            </form>
+        </div>
+       
+  
+    </div>
+   
+    @endsection

@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="col-6 py-5">
-    <h2>Modifica L'Articolo</h2>
+<div class="col-6 p-5">
+    <h2 class="mb-4">Modifica L'Articolo</h2>
     <form action="{{route('articles.update', $article->id)}}" method="POST">
         @csrf
         @method('PUT')

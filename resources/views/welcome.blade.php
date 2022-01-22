@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -66,33 +67,83 @@
         <script src="{{asset('js/app.js')}}"></script>
     </head>
     <body>
-        <div id="vueApp" class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ route('admin.users.index') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand mr-5" href="{{ url('/') }}">
+                    {{-- {{ config('app.name', 'Laravel') }} --}}
+                    BOOLPRESS
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+                        <li class="ml-5 pl-5 mr-3">
+                            <a href="{{route('articles.create')}}" class="text-dark">Crea un articolo</a>
+                        </li>
+                        <li class=" mr-3 ">
+                            <a href="{{route('articles.index')}} " class="text-dark">Lista degli articoli</a> 
+                        </li>
+                        <li class="mr-3">
+                            @if (Auth::user()->role === 'admin')
+                            <a href="{{route('admin.users.index')}}" class="text-dark">Lista utenti</a>
+                            @endif
+                        </li>
+                        
+                    </ul>
+                    
+                    <!-- Right Side Of Navbar -->
+                    
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        
+                        
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+            
+                            <li class="nav-item dropdown">
+                                
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if (Auth::user()->role === 'admin')
+                                    <a class="dropdown-item" href="{{route('admin.users.index')}}" class="text-white mb-3">Lista utenti</a>
+                                    @endif
+                                   
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+                                   
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
-            @endif
+            </div>
+            
+        </nav>
+        <div id="vueApp" class="flex-center position-ref full-height">
+            
                 <App></App>
-                {{-- <ul>
-                    @foreach ($article as $art)
-                    <li>
-                        <h3>{{$art->titolo}}</h3>
-                        <a href="{{route('articles.show', $art->id)}}">vai all' articolo</a>
-                    </li>
-                    @endforeach
-                </ul> --}}
-               
-               
-               
-           
+                
         </div>
     </body>
 </html>

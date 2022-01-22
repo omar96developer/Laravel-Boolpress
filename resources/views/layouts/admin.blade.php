@@ -74,7 +74,7 @@
         </nav>
 
         <main class="d-flex" style="min-height: calc(100vh - 55px);">
-            <div class="col-3 bg-success d-flex flex-column p-5">
+            <div class="col-2 bg-success d-flex flex-column p-5">
                   
                 @if (Auth::user()->role === 'admin')
                 <a href="{{route('admin.users.index')}}" class="text-white mb-3">Lista utenti</a>

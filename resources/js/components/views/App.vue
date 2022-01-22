@@ -2,8 +2,8 @@
     <div>
        <h1>HOMEPAGE</h1>
     
-       <ul>
-            <li v-for="art in articleList" :key="art.id">
+       
+            <div v-for="art in articleList" :key="art.id">
                 <h3>{{art.titolo}}</h3>
                 <p>{{art.contenuto}}</p>
                 <p>
@@ -11,8 +11,8 @@
 
                 </p>
                 
-            </li>
-        </ul> 
+            </div>
+        
     </div>
 </template>
 

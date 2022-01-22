@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="col-6 py-5">
-    <h2>Crea Un Articolo</h2>
+<div class="col-6 p-5">
+    <h2 class="mb-4">Crea Un Articolo</h2>
     <form action="{{route('articles.store')}}" method="POST" class="mb-5">
         @csrf
         <div class="form-group">
