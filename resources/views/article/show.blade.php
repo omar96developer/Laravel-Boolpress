@@ -5,11 +5,11 @@
             <h1>{{$article->titolo}}</h1>
             <p>{{$article->contenuto}}</p>
             <h6>Genere: <small class="badge bg-success text-white">{{$article->category->name}}</small> </h6>
-            
+            <h6>Attore/i: 
             @foreach ($article->tags as $tag)
-                <h6>Attore/i: <small class="badge bg-success text-white">{{$tag->name}}</small> </h6>
+               <small class="badge bg-success text-white">{{$tag->name}}</small>
             @endforeach
-            
+            </h6>
         <div class="d-flex mt-3">
             
             <button class="btn btn-warning mr-3" type="submit"><a href="{{route('articles.edit', $article->id)}} " class="text-dark">Modifica</a></button>
