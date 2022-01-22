@@ -10,6 +10,10 @@
     
     <h1>{{$article->titolo}}</h1>
     <h5>{{$article->category->name}}</h5>
+    
+    @foreach ($article->tags as $tag)
+        <span>{{$tag->name}}, </span>
+    @endforeach
     <p>{{$article->contenuto}}</p>
     <a href="{{route('articles.edit', $article->id)}}">modifica</a>
     <form action="{{route('articles.destroy', $article->id)}}" method="post">

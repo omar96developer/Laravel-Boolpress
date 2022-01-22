@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Category;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
     public function article()
     {
-        $article = Article::with('Category')->get();
+        $article = Article::with('Category')->with('tags')->get();
         return $article;
     }
     /**
@@ -33,7 +34,12 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('article.create', compact('categories'));
+        $tags = Tag::all();
+
+        return view('article.create', [
+            "categories" => $categories,
+            "tags" => $tags
+        ]);
     }
 
     /**
@@ -50,7 +56,10 @@ class ArticleController extends Controller
 
         $newArticle->titolo = $data['titolo'];
         $newArticle->contenuto = $data['contenuto'];
+        $newArticle->category_id = $data['category_id'];
         $newArticle->save();
+        $newArticle->tags()->sync($data['tags']);
+
         return redirect()->route('articles.show', $newArticle->id);
     }
 
@@ -74,9 +83,11 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         $categories = Category::all();
+        $tags = Tag::all();
         return view('article.edit', [
             "article" => $article,
-            "categories" => $categories
+            "categories" => $categories,
+            "tags" => $tags
         ]);
     }
 
@@ -91,6 +102,7 @@ class ArticleController extends Controller
     {
         $data = $request->all();
         $article->update($data);
+        $article->tags()->sync($data['tags']);
         return redirect()->route('articles.show', $article->id);
     }
 

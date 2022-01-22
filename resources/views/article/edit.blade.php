@@ -21,7 +21,22 @@
             {{$category->name}}
         </option>
         @endforeach
+
+
         </select>
+        
+        <label for="tags">Tags Attore</label>
+        <select name="tags[]" multiple>
+        @foreach($tags as $tag)
+       {{--  @php
+            $exists = $article->tags->where('id', $tag->id)->count();
+        @endphp --}}
+        <option value="{{$tag->id}}" {{-- @if ($exists) selected @endif --}} @if ($article->tags->contains($tag)) selected @endif>
+            {{$tag->name}}
+        </option>
+        @endforeach
+        </select>
+        
     
         <label for="contenuto">contenuto</label>
         <textarea  name="contenuto" rows="10" cols="100" ">

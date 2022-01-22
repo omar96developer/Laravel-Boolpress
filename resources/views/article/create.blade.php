@@ -24,10 +24,20 @@
         </select>
 
 
+
+
         <label for="contenuto">contenuto</label>
-        <textarea name="contenuto" rows="10" cols="100" placeholder="Scrivi qui...">
-            
-        </textarea>
+        <textarea name="contenuto" rows="10" cols="100" placeholder="Scrivi qui..."></textarea>
+
+        </select>
+        <label for="tags">Tags Attore</label>
+        <select name="tags[]" multiple>
+        @foreach($tags as $tag)
+        <option value="{{$tag->id}}">
+            {{$tag->name}}
+        </option>
+        @endforeach
+        </select>
     
         
         <input type="submit" value="Salva">
