@@ -11,7 +11,7 @@ class ArticleController extends Controller
 {
     public function article()
     {
-        $article = Article::all();
+        $article = Article::with('Category')->get();
         return $article;
     }
     /**
@@ -21,7 +21,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = Article::with("category")->get();
+        $article = Article::all();
         return view('article.index', compact('article'));
     }
 
