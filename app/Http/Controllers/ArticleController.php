@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
-    public function article()
+    public function article(Request $request)
     {
-        $article = Article::with('Category')->with('tags')->get();
+        $article = Article::with('Category')->with('tags')->paginate("per_page");
         return $article;
     }
     /**

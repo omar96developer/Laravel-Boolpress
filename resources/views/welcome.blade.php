@@ -87,9 +87,9 @@
                             <a href="{{route('articles.index')}} " class="text-dark">Lista degli articoli</a> 
                         </li>
                         <li class="mr-3">
-                            @if (Auth::user()->role === 'admin')
+                            {{-- @if (Auth::user()->role === 'admin') --}}
                             <a href="{{route('admin.users.index')}}" class="text-dark">Lista utenti</a>
-                            @endif
+                           {{--  @endif --}}
                         </li>
                         
                     </ul>

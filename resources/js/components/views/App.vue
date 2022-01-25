@@ -22,15 +22,24 @@ export default {
     data() {
         return {
             articleList: [],
+            currentPage: 1,
+            lastPage: null
         }
     },
-    mounted() {
-        axios.get('/api/articles').then((resp) =>{
-            this.articleList = resp.data;
+    methods: {
+        getData(page = 1) {
+            axios.get('/api/articles?page=' + page).then((resp) =>{
+            this.articleList = resp.data.data;
+            this.currentPage = resp.data.current_page;
+            this.lastPage = resp.data.last_page;
         });
     }
+    },
+    
+    mounted() {
+        this.getData();
 
-}
+    }
 </script>
 
 <style>
