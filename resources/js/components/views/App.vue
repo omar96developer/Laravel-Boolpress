@@ -1,9 +1,6 @@
 <template>
     <div>
-       <h1>HOMEPAGE</h1>
-    
-       
-            <div v-for="art in articleList" :key="art.id">
+            <div v-for="art in articleList" :key="art.id" style="margin-bottom:50px">
                 <h3>{{art.titolo}}</h3>
                 <p>{{art.contenuto}}</p>
                 <p>
@@ -12,6 +9,11 @@
                 </p>
                 
             </div>
+           <ul style="display: flex;list-style: none;">
+                <li v-for="page of lastPage" :key="page"  >
+                    <button class="page-link" @click="getData(page)">{{page}}</button>
+                </li>
+            </ul>
         
     </div>
 </template>
@@ -23,25 +25,35 @@ export default {
         return {
             articleList: [],
             currentPage: 1,
-            lastPage: null
+            lastPage: null,
+            click: false 
         }
     },
     methods: {
-        getData(page = 1) {
-            axios.get('/api/articles?page=' + page).then((resp) =>{
+      getData(page = 1){
+           axios.get('/api/articles?page=' + page).then((resp) =>{
             this.articleList = resp.data.data;
             this.currentPage = resp.data.current_page;
-            this.lastPage = resp.data.last_page;
+            this.lastPage = resp.data.last_page; 
         });
-    }
-    },
-    
-    mounted() {
-        this.getData();
+        
 
+      },
+      onClick(){
+            this.click = true;
+        }
+    },
+
+    mounted() {
+       this.getData();
     }
+
+}
 </script>
 
 <style>
-
+.acqua{
+    background-color: aqua;
+    color: white;
+}
 </style>
