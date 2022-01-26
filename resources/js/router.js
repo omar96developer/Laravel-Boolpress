@@ -25,8 +25,8 @@ const router = new VueRouter({
             component: Contact
         },
         {
-            path: '/posts',
-            name: 'posts',
+            path: '/article/:id',
+            name: 'article',
             component: Posts
         }
     ]

@@ -219,6 +219,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   data: function data() {
@@ -1508,9 +1511,16 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("about")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("About Us")])])
+  },
+]
 render._withStripped = true
 
 
@@ -1532,9 +1542,16 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("conatct\n    \n")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("Contact")])])
+  },
+]
 render._withStripped = true
 
 
@@ -1560,16 +1577,22 @@ var render = function () {
     "div",
     { staticClass: "p-5" },
     [
-      _c("h1", [_vm._v("homapage nuova")]),
+      _c("h1", [_vm._v("Homapage Nuova")]),
       _vm._v(" "),
       _vm._l(_vm.articleList, function (art) {
         return _c(
           "div",
           { key: art.id, staticStyle: { "margin-bottom": "50px" } },
           [
-            _c("h3", { staticClass: "bg-success col-6 text-center" }, [
-              _vm._v(_vm._s(art.titolo)),
-            ]),
+            _c(
+              "router-link",
+              { attrs: { to: { name: "article", params: { id: art.id } } } },
+              [
+                _c("h3", { staticClass: "bg-success col-6 text-center" }, [
+                  _vm._v(_vm._s(art.titolo)),
+                ]),
+              ]
+            ),
             _vm._v(" "),
             _c("p", [_vm._v(_vm._s(art.contenuto))]),
             _vm._v(" "),
@@ -1587,7 +1610,8 @@ var render = function () {
               ],
               2
             ),
-          ]
+          ],
+          1
         )
       }),
       _vm._v(" "),
@@ -1638,9 +1662,16 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("post\n    \n")])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("h1", [_vm._v("article")])])
+  },
+]
 render._withStripped = true
 
 
@@ -17462,8 +17493,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'contact',
     component: _pages_Contact_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
-    path: '/posts',
-    name: 'posts',
+    path: '/article/:id',
+    name: 'article',
     component: _pages_Posts_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
 });
