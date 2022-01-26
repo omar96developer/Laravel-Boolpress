@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="p-5">
       <h1>homapage nuova</h1>
         <div v-for="art in articleList" :key="art.id" style="margin-bottom:50px">
-                <h3 class="bg-success">{{art.titolo}}</h3>
+                <h3 class="bg-success col-6 text-center">{{art.titolo}}</h3>
                 <p>{{art.contenuto}}</p>
                 <p>
                     {{art.category.name}} -Tags: <span v-for="tag in art.tags" :key="tag.id">{{tag.name}}</span>

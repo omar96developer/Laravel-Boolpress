@@ -67,7 +67,7 @@
         <script src="{{asset('js/app.js')}}"></script>
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" >
             <div class="container">
                 <a class="navbar-brand mr-5" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
@@ -140,7 +140,7 @@
             </div>
             
         </nav>
-        <div id="vueApp" class="flex-center position-ref full-height">
+        <div id="vueApp" class="container " >
             
                 <App></App>
                 
