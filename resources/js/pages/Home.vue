@@ -1,7 +1,8 @@
 <template>
-    <div>
-            <div v-for="art in articleList" :key="art.id" style="margin-bottom:50px">
-                <h3>{{art.titolo}}</h3>
+  <div>
+      <h1>homapage nuova</h1>
+        <div v-for="art in articleList" :key="art.id" style="margin-bottom:50px">
+                <h3 class="bg-success">{{art.titolo}}</h3>
                 <p>{{art.contenuto}}</p>
                 <p>
                     {{art.category.name}} -Tags: <span v-for="tag in art.tags" :key="tag.id">{{tag.name}}</span>
@@ -15,12 +16,12 @@
                 </li>
             </ul>
         
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "App",
+    name: "Home",
     data() {
         return {
             articleList: [],
@@ -50,10 +51,7 @@ export default {
 
 }
 </script>
-
+    
 <style>
-.acqua{
-    background-color: aqua;
-    color: white;
-}
+
 </style>
