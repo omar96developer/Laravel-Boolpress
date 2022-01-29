@@ -335,7 +335,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-      axios.get('/api/articles?page=' + page).then(function (resp) {
+      var category = this.$route.query.category;
+      axios.get('/api/articles', {
+        params: {
+          page: page,
+          category: category
+        }
+      }).then(function (resp) {
         _this.articleList = resp.data.data;
         _this.currentPage = resp.data.current_page;
         _this.lastPage = resp.data.last_page;
@@ -1815,10 +1821,7 @@ var render = function () {
                   {
                     staticClass: "side-link",
                     attrs: {
-                      to: {
-                        name: "categoryshow",
-                        query: { category: category.id },
-                      },
+                      to: { name: "postall", query: { category: category.id } },
                     },
                   },
                   [_vm._v(_vm._s(category.name))]

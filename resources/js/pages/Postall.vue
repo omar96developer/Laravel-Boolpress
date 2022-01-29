@@ -40,7 +40,15 @@ export default {
     },
     methods: {
       getData(page = 1){
-           axios.get('/api/articles?page=' + page).then((resp) =>{
+          const category = this.$route.query.category;
+          
+           axios.get('/api/articles',{
+               params: {
+                   page,
+                   category,
+               },
+           })
+           .then((resp) =>{
             this.articleList = resp.data.data;
             this.currentPage = resp.data.current_page;
             this.lastPage = resp.data.last_page; 

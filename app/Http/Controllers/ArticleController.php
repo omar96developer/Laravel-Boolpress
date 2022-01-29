@@ -17,9 +17,16 @@ class ArticleController extends Controller
         return response()->json($post);
     }
 
-    public function article()
+    public function article(Request $request)
     {    
-        $article = Article::with('Category')->with('tags')->paginate(3);
+        $category = $request->query("category");
+        if($category) {
+            $article = Article::where('category_id', $category)->with('Category')->with('tags')->paginate(3);
+
+        }else{
+            $article = Article::with('Category')->with('tags')->paginate(3);
+
+        }
         
         return $article;
     }

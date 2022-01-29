@@ -18,7 +18,7 @@
                 <h5>Categorie</h5>
                 <ul class="list-unstyled">
                     <li v-for="category of categoriesList" :key="category.id">
-                        <router-link :to="{name: 'categoryshow', query: {category:category.id} }" class="side-link">{{category.name}}</router-link>
+                        <router-link :to="{name: 'postall', query: {category : category.id} }" class="side-link">{{category.name}}</router-link>
                     </li>
                 </ul>
             </div>
