@@ -10962,3 +10962,11 @@ a.text-dark:focus {
   }
 }
 
+.nav-link {
+  font-weight: bold;
+}
+
+.router-link-exact-active {
+  color: red !important;
+}
+

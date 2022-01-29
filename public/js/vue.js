@@ -114,6 +114,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App'
 });
@@ -198,6 +203,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1427,38 +1438,80 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("nav", { staticClass: "nav-2 text-center" }, [
-        _c("ul", { staticClass: "d-flex justify-content-center" }, [
+      _c(
+        "nav",
+        {
+          staticClass: "nav-2 text-center navbar navbar-expand-lg navbar-light",
+        },
+        [
           _c(
-            "li",
-            { staticClass: "mr-2", staticStyle: { "list-style": "none" } },
-            [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")])],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "mr-2", staticStyle: { "list-style": "none" } },
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "navbarSupportedContent" },
+            },
             [
-              _c("router-link", { attrs: { to: "/contact" } }, [
-                _vm._v("Contatti"),
-              ]),
-            ],
-            1
+              _c(
+                "ul",
+                {
+                  staticClass:
+                    "navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center",
+                  staticStyle: { width: "100%" },
+                },
+                [
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link active",
+                          attrs: { "aria-current": "page", to: "/" },
+                        },
+                        [_vm._v("Home")]
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link active",
+                          attrs: { "aria-current": "page", to: "/contact" },
+                        },
+                        [_vm._v("Contatti")]
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    { staticClass: "nav-item" },
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "nav-link active",
+                          attrs: { "aria-current": "page", to: "/about" },
+                        },
+                        [_vm._v("Chi Siamo")]
+                      ),
+                    ],
+                    1
+                  ),
+                ]
+              ),
+            ]
           ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "mr-2", staticStyle: { "list-style": "none" } },
-            [
-              _c("router-link", { attrs: { to: "/about" } }, [
-                _vm._v("Chi Siamo"),
-              ]),
-            ],
-            1
-          ),
-        ]),
-      ]),
+        ]
+      ),
       _vm._v(" "),
       _c("router-view"),
     ],
@@ -1596,74 +1649,85 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "p-5" },
-    [
-      _c("h1", [_vm._v("Homapage Nuova")]),
-      _vm._v(" "),
-      _vm._l(_vm.articleList, function (art) {
-        return _c(
-          "div",
-          { key: art.id, staticStyle: { "margin-bottom": "50px" } },
-          [
-            _c(
-              "router-link",
-              { attrs: { to: { name: "article", params: { id: art.id } } } },
-              [
-                _c("h3", { staticClass: "bg-success col-6 text-center" }, [
-                  _vm._v(_vm._s(art.titolo)),
-                ]),
-              ]
-            ),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(art.contenuto))]),
-            _vm._v(" "),
-            _c(
-              "p",
-              [
-                _vm._v(
-                  "\n                  " +
-                    _vm._s(art.category.name) +
-                    " -Tags: "
-                ),
-                _vm._l(art.tags, function (tag) {
-                  return _c("span", { key: tag.id }, [_vm._v(_vm._s(tag.name))])
-                }),
-              ],
-              2
-            ),
-          ],
-          1
-        )
-      }),
-      _vm._v(" "),
+  return _c("div", { staticClass: "p-5" }, [
+    _c("div", { staticClass: "d-flex" }, [
       _c(
-        "ul",
-        { staticStyle: { display: "flex", "list-style": "none" } },
-        _vm._l(_vm.lastPage, function (page) {
-          return _c("li", { key: page }, [
-            _c(
-              "button",
-              {
-                staticClass: "page-link",
-                on: {
-                  click: function ($event) {
-                    return _vm.getData(page)
-                  },
-                },
-              },
-              [_vm._v(_vm._s(page))]
-            ),
-          ])
+        "div",
+        { staticClass: "col-8" },
+        _vm._l(_vm.articleList, function (art) {
+          return _c(
+            "div",
+            { key: art.id, staticStyle: { "margin-bottom": "50px" } },
+            [
+              _c(
+                "router-link",
+                { attrs: { to: { name: "article", params: { id: art.id } } } },
+                [
+                  _c("h3", { staticClass: "bg-success text-center" }, [
+                    _vm._v(_vm._s(art.titolo)),
+                  ]),
+                ]
+              ),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(art.contenuto))]),
+              _vm._v(" "),
+              _c(
+                "p",
+                [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(art.category.name) +
+                      " -Tags: "
+                  ),
+                  _vm._l(art.tags, function (tag) {
+                    return _c("span", { key: tag.id }, [
+                      _vm._v(_vm._s(tag.name)),
+                    ])
+                  }),
+                ],
+                2
+              ),
+            ],
+            1
+          )
         }),
         0
       ),
-    ],
-    2
-  )
+      _vm._v(" "),
+      _vm._m(0),
+    ]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticStyle: { display: "flex", "list-style": "none" } },
+      _vm._l(_vm.lastPage, function (page) {
+        return _c("li", { key: page }, [
+          _c(
+            "button",
+            {
+              staticClass: "page-link",
+              on: {
+                click: function ($event) {
+                  return _vm.getData(page)
+                },
+              },
+            },
+            [_vm._v(_vm._s(page))]
+          ),
+        ])
+      }),
+      0
+    ),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-4" }, [_c("h1", [_vm._v("sidebar")])])
+  },
+]
 render._withStripped = true
 
 
@@ -17568,7 +17632,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\MAMP\Esercizi Php\laravel-boolpress\resources\js\vue.js */"./resources/js/vue.js");
+module.exports = __webpack_require__(/*! C:\MAMP\Esercizi Php\Laravel-Boolpress\resources\js\vue.js */"./resources/js/vue.js");
 
 
 /***/ })

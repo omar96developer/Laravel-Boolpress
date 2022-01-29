@@ -1,23 +1,29 @@
 <template>
   <div class="p-5">
-      <h1>Homapage Nuova</h1>
-        <div v-for="art in articleList" :key="art.id" style="margin-bottom:50px">
+        <div class="d-flex">
+            <div class="col-8">
+                <div v-for="art in articleList" :key="art.id" style="margin-bottom:50px" >
                 <router-link :to="{name:'article', params: {id: art.id}}">
-                    <h3 class="bg-success col-6 text-center">{{art.titolo}}</h3>
+                    <h3 class="bg-success text-center">{{art.titolo}}</h3>
                 </router-link>
                 
                 <p>{{art.contenuto}}</p>
                 <p>
                     {{art.category.name}} -Tags: <span v-for="tag in art.tags" :key="tag.id">{{tag.name}}</span>
-
-                </p>
-                
+                </p>                 
             </div>
-           <ul style="display: flex;list-style: none;">
-                <li v-for="page of lastPage" :key="page"  >
-                    <button class="page-link" @click="getData(page)">{{page}}</button>
-                </li>
-            </ul>
+            </div>
+            
+            <div class="col-4">
+                <h1>sidebar</h1>
+            </div>
+        </div>
+        
+        <ul style="display: flex;list-style: none;">
+            <li v-for="page of lastPage" :key="page"  >
+                <button class="page-link" @click="getData(page)">{{page}}</button>
+            </li>
+        </ul>
         
   </div>
 </template>
