@@ -1,7 +1,10 @@
 <template>
   <div class="p-5">
+      
         <div class="d-flex">
+            
             <div class="col-8">
+                
                 <div v-for="art in articleList" :key="art.id" style="margin-bottom:50px" >
                 <router-link :to="{name:'article', params: {id: art.id}}">
                     <h3 class="bg-success text-center">{{art.titolo}}</h3>

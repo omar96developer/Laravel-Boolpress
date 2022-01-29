@@ -241,6 +241,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   data: function data() {
@@ -249,6 +254,8 @@ __webpack_require__.r(__webpack_exports__);
       categoriesList: [],
       currentPage: 1,
       lastPage: null,
+      loading: true,
+      cat: null,
       click: false
     };
   },
@@ -263,6 +270,12 @@ __webpack_require__.r(__webpack_exports__);
         _this.lastPage = resp.data.last_page;
       });
     },
+    categorie: function categorie() {
+      this.cat = 'Categorie';
+    },
+    loader: function loader() {
+      this.loading = false;
+    },
     onClick: function onClick() {
       this.click = true;
     },
@@ -275,8 +288,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getData();
-    this.getCategories();
+    setTimeout(this.loader, 1000);
+    setTimeout(this.getData, 1000);
+    setTimeout(this.getCategories, 1000);
+    setTimeout(this.categorie, 1000);
+    /* this.getData(); */
   }
 });
 
@@ -291,6 +307,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -1759,6 +1778,22 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "p-5" }, [
+    _vm.loading
+      ? _c("div", { staticClass: "progress mb-3" }, [
+          _c("div", {
+            staticClass:
+              "progress-bar progress-bar-striped progress-bar-animated",
+            staticStyle: { width: "75%" },
+            attrs: {
+              role: "progressbar",
+              "aria-valuenow": "75",
+              "aria-valuemin": "0",
+              "aria-valuemax": "100",
+            },
+          }),
+        ])
+      : _vm._e(),
+    _vm._v(" "),
     _c("div", { staticClass: "d-flex" }, [
       _c(
         "div",
@@ -1806,7 +1841,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col-4  text-right" }, [
-        _c("h5", [_vm._v("Categorie")]),
+        _c("h5", [_vm._v(_vm._s(_vm.cat))]),
         _vm._v(" "),
         _c(
           "ul",
