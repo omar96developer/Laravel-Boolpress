@@ -10,14 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+
     public function post($id) 
     {
         $post = Article::where("id", $id)->first();
         return response()->json($post);
     }
+
     public function article()
-    {
+    {    
         $article = Article::with('Category')->with('tags')->paginate(3);
+        
         return $article;
     }
 

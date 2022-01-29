@@ -14,14 +14,7 @@
             </div>
             </div>
             
-            <div class="col-4  text-right">
-                <h5>Categorie</h5>
-                <ul class="list-unstyled">
-                    <li v-for="category of categoriesList" :key="category.id">
-                        <router-link :to="{name: 'categoryshow', query: {category:category.id} }" class="side-link">{{category.name}}</router-link>
-                    </li>
-                </ul>
-            </div>
+           
         </div>
         
         <ul style="display: flex;list-style: none;">
@@ -57,16 +50,12 @@ export default {
       onClick(){
             this.click = true;
         },
-        getCategories(){
-            axios.get('/api/categories').then((resp) => {
-                this.categoriesList = resp.data;
-            })
-        }
+        
     },
 
     mounted() {
        this.getData();
-       this.getCategories();
+      
     }
 
 }
