@@ -22,3 +22,4 @@ Route::get('/articles', 'ArticleController@article');
 Route::get('/article/{id}', 'ArticleController@post');
 
 Route::get('/categories', 'CategoryController@index');
+Route::post('/contacts', 'ContactController@store');

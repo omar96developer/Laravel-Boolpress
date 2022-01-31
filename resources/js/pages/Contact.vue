@@ -1,7 +1,7 @@
 <template>
   <div><h1>Contact</h1>
   <div class="container">
-     <form @submit="onSubmit" v-if="!formSubmitted">
+     <form @submit.prevent="onSubmit" v-if="!formSubmitted">
         
         <div class="form-group">
             <label class="form-label" for="nome">Nome</label>
@@ -39,7 +39,10 @@ export default {
   },
   methods: {
     onSubmit() {
+      axios.post("/api/contacts", this.form).then((resp) => {
       this.formSubmitted = true;
+        
+      })
     }
   }
 
