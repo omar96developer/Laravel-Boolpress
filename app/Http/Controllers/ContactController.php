@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 class ContactController extends Controller
 {
     public function store(Request $request){
-        Mail::to(env("MAIL_CONTACT_DESTINATION"))->send(new SendContactMail());
+        $data = $request->all();
+        Mail::to(env("MAIL_CONTACT_DESTINATION"))->send(new SendContactMail($data));
     }
 }

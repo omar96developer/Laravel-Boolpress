@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>la tua prima email</h1>
+    <h1>Nuova Email</h1>
+    <h3>Nome: {{$data['nome']}}</h3>
+    <h5>Email: {{$data['email']}}</h5>
+    <p>Messaggio: {{$data['messaggio']}}</p>
 </body>
 </html>
