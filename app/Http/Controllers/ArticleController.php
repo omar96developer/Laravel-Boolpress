@@ -15,6 +15,7 @@ class ArticleController extends Controller
     public function post($id) 
     {
         $post = Article::where("id", $id)->first();
+        $post->coverImg = url("/storage/" . $post->coverImg);
         return response()->json($post);
     }
 

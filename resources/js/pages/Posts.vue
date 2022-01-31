@@ -2,6 +2,9 @@
   <div>
     <h1>article</h1>
     <h1>{{post.titolo}}</h1>
+    <img :src="post.coverImg" alt="#" style="max-height: 500px;width: 500px;object-fit:cover;" class="mb-4">
+    
+
     <p>{{post.contenuto}}</p>
  
       

@@ -396,6 +396,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2012,6 +2015,16 @@ var render = function () {
     _c("h1", [_vm._v("article")]),
     _vm._v(" "),
     _c("h1", [_vm._v(_vm._s(_vm.post.titolo))]),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "mb-4",
+      staticStyle: {
+        "max-height": "500px",
+        width: "500px",
+        "object-fit": "cover",
+      },
+      attrs: { src: _vm.post.coverImg, alt: "#" },
+    }),
     _vm._v(" "),
     _c("p", [_vm._v(_vm._s(_vm.post.contenuto))]),
   ])
