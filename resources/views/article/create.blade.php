@@ -3,12 +3,16 @@
 @section('content')
 <div class="col-6 p-5">
     <h2 class="mb-4">Crea Un Articolo</h2>
-    <form action="{{route('articles.store')}}" method="POST" class="mb-5">
+    <form action="{{route('articles.store')}}" method="POST" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label class="form-label" for="titolo">Titolo</label>
             <input type="text" name="titolo" id="titolo" class="form-control">
         </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Scegli immagine</label>
+            <input class="form-control" name="coverImg" type="file" id="formFile">
+          </div>
         
     
         <div class="form-group">
@@ -22,7 +26,7 @@
             </select>
         </div>
         
-        <div class="form-group">
+       {{--  <div class="form-group">
             <label for="tags" class="form-label">Tags Attore</label>
             <select name="tags[]" class="form-control" multiple>
             @foreach($tags as $tag)
@@ -31,7 +35,7 @@
             </option>
             @endforeach
             </select>
-        </div>
+        </div> --}}
     
         <div class="form-group">
             <label for="contenuto" class="form-label">Contenuto</label>

@@ -7,6 +7,7 @@ use App\Article;
 use App\Category;
 use App\Tag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -69,12 +70,14 @@ class ArticleController extends Controller
         $data = $request->all();
         $newArticle = new Article;
         $newArticle->author = Auth::user()->id;
-
         $newArticle->titolo = $data['titolo'];
+        if ($request->file("coverImg")){
+        $newArticle->coverImg = Storage::put("article", $data["coverImg"]);
+        }
         $newArticle->contenuto = $data['contenuto'];
         $newArticle->category_id = $data['category_id'];
         $newArticle->save();
-        $newArticle->tags()->sync($data['tags']);
+        /* $newArticle->tags()->sync($data['tags']); */
 
         return redirect()->route('articles.show', $newArticle->id);
     }
@@ -103,7 +106,7 @@ class ArticleController extends Controller
         return view('article.edit', [
             "article" => $article,
             "categories" => $categories,
-            "tags" => $tags
+            /* "tags" => $tags */
         ]);
     }
 
@@ -117,8 +120,20 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         $data = $request->all();
+      
+        if ($request->file("coverImg")){
+            if($article->coverImg){
+                Storage::delete($article->coverImg);
+            }
+
+            $article->coverImg = Storage::put("article", $data["coverImg"]);
+    
+        }
+
         $article->update($data);
-        $article->tags()->sync($data['tags']);
+
+    
+       /*  $article->tags()->sync($data['tags']);  */
         return redirect()->route('articles.show', $article->id);
     }
 

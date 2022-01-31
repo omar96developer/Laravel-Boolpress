@@ -3,13 +3,17 @@
 @section('content')
 <div class="col-6 p-5">
     <h2 class="mb-4">Modifica L'Articolo</h2>
-    <form action="{{route('articles.update', $article->id)}}" method="POST">
+    <form action="{{route('articles.update', $article->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
             <label class="form-labeò" for="titolo">Titolo</label>
             <input type="text" name="titolo" id="titolo" class="form-control" value="{{$article->titolo}}">
         </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Scegli immagine</label>
+            <input class="form-control" type="file" id="formFile" name="coverImg" value="{{$article->coverImg}}">
+          </div>
       
         <div class="form-group">
             <label for="categoria" class="form-label">Categoria</label>
@@ -22,7 +26,7 @@
             </select>
         </div>
       
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="tags" class="form-label">Tags Attore</label>
             <select name="tags[]" class="form-control" multiple>
             @foreach($tags as $tag)
@@ -32,7 +36,7 @@
             @endforeach
             </select>
         </div>
-
+ --}}
         <div class="form-group">
             <label for="contenuto" class="form-label">Contenuto</label>
             <textarea class="form-control" name="contenuto" rows="10" cols="100" placeholder="Scrivi qui...">{{$article->contenuto}}</textarea>

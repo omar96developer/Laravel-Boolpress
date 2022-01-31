@@ -3,6 +3,7 @@
     <div class="col-10 p-5">
 
             <h1>{{$article->titolo}}</h1>
+           <img src="{{asset("storage/" . $article->coverImg)}}" alt="#" style="max-height: 500px;width: 500px;object-fit:cover;" class="mb-4">
             <p>{{$article->contenuto}}</p>
             <h6>Genere: <small class="badge bg-success text-white">{{$article->category->name}}</small> </h6>
             <h6>Attore/i: 
